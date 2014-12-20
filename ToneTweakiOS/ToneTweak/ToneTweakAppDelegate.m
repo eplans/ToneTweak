@@ -28,7 +28,7 @@
     
     audioController.active = YES;
     
-    self.viewController = [[[ToneTweakViewController alloc] initWithNibName:@"Main" bundle:nil] autorelease];
+    //self.viewController = [[[ToneTweakViewController alloc] initWithNibName:@"Main" bundle:nil] autorelease];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     return YES;
