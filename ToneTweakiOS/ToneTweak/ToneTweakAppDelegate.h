@@ -8,20 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "PdAudioController.h"
-#import "PdDispatcher.h"
+
 
 @class ToneTweakViewController;
 
-@interface ToneTweakAppDelegate : NSObject <UIApplicationDelegate> {
+@interface ToneTweakAppDelegate : UIResponder <UIApplicationDelegate> {
     UIWindow *window;
-    ToneTweakViewController *viewController;
-    
-    PdAudioController *audioController;
-    PdDispatcher *dispatcher;
 }
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet ToneTweakViewController *viewController;
+@property (nonatomic, retain) PdAudioController *audioController;
+@property (nonatomic, retain) ToneTweakViewController *viewController;
 
 @end
 

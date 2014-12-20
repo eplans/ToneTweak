@@ -16,28 +16,35 @@
 @synthesize window;
 @synthesize viewController;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    dispatcher = [[PdDispatcher alloc] init];
-    [PdBase setDelegate:dispatcher];
-    
-    audioController = [[PdAudioController alloc] init];
-    [audioController configureAmbientWithSampleRate:44100 numberChannels:2 mixingEnabled:YES];
-    [audioController print];
+@synthesize audioController = _audioController;
 
-//    [viewController pdSetup];
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    audioController.active = YES;
+    _audioController = [[PdAudioController alloc] init];
+    if ([self.audioController configureAmbientWithSampleRate:44100 numberChannels:2 mixingEnabled:YES] != PdAudioOK) {
+        // TODO: handle this!
+        NSLog(@"biobeatsAudioEngineController: failed to initialize audio components");
+    }
+    if ((self.audioController.active = YES)) {
+        NSLog(@"biobeatsAudioEngineController: audio controller activated");
+    } else
+    {
+        NSLog(@"biobeatsAudioEngineController: audio controller NOT activated");
+    }
     
-    //self.viewController = [[[ToneTweakViewController alloc] initWithNibName:@"Main" bundle:nil] autorelease];
-    self.window.rootViewController = self.viewController;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    UIViewController *mainViewController = [storyboard instantiateInitialViewController];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = mainViewController;
     [self.window makeKeyAndVisible];
     return YES;
 }
 
 - (void)dealloc {
-    [audioController release];
+    [_audioController release];
     [PdBase setDelegate:nil];
-    [dispatcher release];
     [window release];
     [viewController release];
     [super dealloc];

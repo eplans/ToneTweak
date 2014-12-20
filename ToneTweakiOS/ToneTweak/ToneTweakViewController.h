@@ -17,14 +17,5 @@
 
 @property (retain, nonatomic) IBOutlet UILabel *MainLabel;
 
-- (IBAction)gButton:(id)sender;
-
-- (IBAction)dButton:(id)sender;
-
-- (IBAction)aButton:(id)sender;
-
-- (IBAction)eButton:(id)sender;
-
-- (IBAction)killButton:(id)sender;
 
 @end
