@@ -25,9 +25,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 - (IBAction)gButton:(id)sender {
-     [PdBase sendBangToReceiver:@"G"];
+    [PdBase sendBangToReceiver:@"G"];
+    NSLog(@"Sending G");
 }
 
 - (IBAction)dButton:(id)sender {

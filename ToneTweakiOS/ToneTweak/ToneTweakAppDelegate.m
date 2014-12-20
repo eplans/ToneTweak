@@ -9,47 +9,51 @@
 #import "ToneTweakAppDelegate.h"
 #import "ToneTweakViewController.h"
 #import "PdBase.h"
-#import "PdDispatcher.h"
+#import "PdAudioController.h"
 
 @implementation ToneTweakAppDelegate
 
 @synthesize window;
 @synthesize viewController;
 
-@synthesize audioController = _audioController;
+@synthesize audioController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // load our audio controller
+    self.audioController = [[[PdAudioController alloc] init] autorelease];
+    [self.audioController configureAmbientWithSampleRate:44100 numberChannels:2 mixingEnabled:YES];
     
-    _audioController = [[PdAudioController alloc] init];
-    if ([self.audioController configureAmbientWithSampleRate:44100 numberChannels:2 mixingEnabled:YES] != PdAudioOK) {
-        // TODO: handle this!
-        NSLog(@"biobeatsAudioEngineController: failed to initialize audio components");
-    }
-    if ((self.audioController.active = YES)) {
-        NSLog(@"biobeatsAudioEngineController: audio controller activated");
-    } else
-    {
-        NSLog(@"biobeatsAudioEngineController: audio controller NOT activated");
-    }
+    // set AppDelegate as PdRecieverDelegate to recieve messages from Libpd
+    [PdBase setDelegate:self];
+        
+    [self openAndRunTestPatch];
+    [self.audioController print];
     
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    
-//    UIViewController *mainViewController = [storyboard instantiateInitialViewController];
-//    
-//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//    self.window.rootViewController = mainViewController;
-//    [self.window makeKeyAndVisible];
+    
     return YES;
+}
+- (void)openAndRunTestPatch {
+    // open patch located in app bundle
+    void *x = [PdBase openFile:@"tonetweak.pd" path:[[NSBundle mainBundle] bundlePath]];
+    [self.audioController setActive:YES];
+}
+
+// receivePrint delegate method to receive "print" messages from Libpd
+// for simplicity we are just sending print messages to the debugging console
+- (void)receivePrint:(NSString *)message {
+    NSLog(@"(pd) %@", message);
+}
+
+- (void)setAudioActive:(BOOL)active {
+    [self.audioController setActive:active];
 }
 
 - (void)dealloc {
-    [_audioController release];
-    [PdBase setDelegate:nil];
-    [window release];
     [viewController release];
+    self.window = nil;
+    self.audioController = nil;
     [super dealloc];
 }
-
 - (void)applicationWillEnterForeground:(UIApplication *)application {
 }
 
