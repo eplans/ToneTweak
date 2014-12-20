@@ -7,13 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PdDispatcher.h"
 
-@interface ToneTweakViewController : UIViewController {
-    PdDispatcher *dispatcher;
-    void *patch;
-}
--(void)pdSetup;
+
+@interface ToneTweakViewController : UIViewController
 
 @property (retain, nonatomic) IBOutlet UILabel *MainLabel;
 

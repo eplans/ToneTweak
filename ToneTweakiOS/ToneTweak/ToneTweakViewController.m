@@ -7,26 +7,16 @@
 //
 
 #import "ToneTweakViewController.h"
+#import "PdBase.h"
 
 @implementation ToneTweakViewController
 
--(void)pdSetup {
-    PdDispatcher *dispatcher = (PdDispatcher *)[PdBase delegate];
-    [PdBase openFile:@"tonetweak.pd" path:[[NSBundle mainBundle] resourcePath]];
-}
-
 -(void)viewDidLoad {
-    dispatcher = [[PdDispatcher alloc] init];
-    [PdBase setDelegate:dispatcher];
-    patch = [PdBase openFile:@"ToneTweak.pd" path:[[NSBundle mainBundle] resourcePath]];
     [super viewDidLoad];
 }
 
 -(void)dealloc {
     [_MainLabel release];
-    [PdBase closeFile:patch];
-    [PdBase setDelegate:nil];
-    [dispatcher release];
     [super dealloc];
 }
 

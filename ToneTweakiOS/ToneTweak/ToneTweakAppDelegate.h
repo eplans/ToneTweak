@@ -12,10 +12,9 @@
 
 @class ToneTweakViewController;
 
-@interface ToneTweakAppDelegate : UIResponder <UIApplicationDelegate> {
-    UIWindow *window;
-}
+@interface ToneTweakAppDelegate : UIResponder <UIApplicationDelegate>
 
+@property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, retain) PdAudioController *audioController;
 @property (nonatomic, retain) ToneTweakViewController *viewController;
 
