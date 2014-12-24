@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C0445431A488112004FD357 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C0445421A488112004FD357 /* Images-2.xcassets */; };
 		0C7369B01A41BD860029EAB4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7369AF1A41BD860029EAB4 /* main.m */; };
 		0C7369B31A41BD860029EAB4 /* ToneTweakAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7369B21A41BD860029EAB4 /* ToneTweakAppDelegate.m */; };
 		0C7369B61A41BD860029EAB4 /* ToneTweakViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7369B51A41BD860029EAB4 /* ToneTweakViewController.m */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C0445421A488112004FD357 /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
 		0C7369AA1A41BD860029EAB4 /* ToneTweak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToneTweak.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C7369AE1A41BD860029EAB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0C7369AF1A41BD860029EAB4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				0CD03B521A45C2B100DE3BB6 /* ToneTweak.storyboard */,
 				0C7369BA1A41BD860029EAB4 /* Images.xcassets */,
 				0C7369BC1A41BD860029EAB4 /* LaunchScreen.xib */,
+				0C0445421A488112004FD357 /* Images-2.xcassets */,
 				0C7369AD1A41BD860029EAB4 /* Supporting Files */,
 			);
 			path = ToneTweak;
@@ -272,6 +275,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C0445431A488112004FD357 /* Images-2.xcassets in Resources */,
 				0CD03ACC1A459E6300DE3BB6 /* tonetweak.pd in Resources */,
 				0C7369B91A41BD860029EAB4 /* Main.storyboard in Resources */,
 				0CD03B531A45C2B100DE3BB6 /* ToneTweak.storyboard in Resources */,
